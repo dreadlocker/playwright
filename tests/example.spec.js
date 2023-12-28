@@ -6,6 +6,9 @@ test("check maintenance info", async ({ page }) => {
   await varna.click();
   const vsi4kiAktivni = await page.getByText("Всички активни");
   await vsi4kiAktivni.click();
-  const info = await page.locator("#interruption_areas");
+  const info = await page.locator(".interruption-all_active");
+  console.log(info);
+  // const period = await page.locator(".period");
+  // await page.waitForSelector(period);
   await info.screenshot({ path: "screenshot.png" });
 });
