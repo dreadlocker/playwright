@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cd ./tests && npx playwright test --headed && screenshot.png"
+    "start": "cd ./tests && npx playwright test --headed"
   },
   "keywords": [],
   "author": "",

@@ -7,10 +7,12 @@ test("check maintenance info", async ({ page }) => {
   await varna.click();
   const vsi4kiAktivni = await page.getByText("Всички активни");
   await vsi4kiAktivni.click();
+  await page.waitForTimeout(5000); // hardkodnato 4akane da zaredi stranicata s poly4enite ot BE danni
   await page.waitForSelector(".interruption-data ul li", { timeout: 5000 });
   const posts = await page.$$(".interruption-data ul li");
 
   if (posts.length > 0) {
+    console.log(posts.length);
     const infoJSON = {};
     let index = 0;
     for (const post of posts) {
@@ -21,7 +23,10 @@ test("check maintenance info", async ({ page }) => {
     fs.writeFileSync("info.json", JSON.stringify(infoJSON));
   }
 
+  // za pravena na snimka:
   // await info.screenshot({ path: "screenshot.png" });
-  // run this command in this directory:
-  // npx playwright test --headed
+  // tova da se sloji v package.json:
+  // "scripts": {
+  //   "start": "cd ./tests && npx playwright test --headed && screenshot.png"
+  // },
 });
