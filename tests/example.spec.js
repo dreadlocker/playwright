@@ -12,7 +12,6 @@ test("check maintenance info", async ({ page }) => {
   const posts = await page.$$(".interruption-data ul li");
 
   if (posts.length > 0) {
-    console.log(posts.length);
     const infoJSON = {};
     let index = 0;
     for (const post of posts) {
